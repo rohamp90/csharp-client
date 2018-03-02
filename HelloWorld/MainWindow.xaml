@@ -5,15 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelloWorld"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
+        Title="MainWindow" Height="350" Width="525">
     <!--Exercise 2: change windows state to maximized. 
     please note that the code behind needs to be commented out when testing this-->
 
-    <StackPanel>
-        <TextBlock Background="AliceBlue">Enter Name:</TextBlock>
-        <TextBox x:Name="uxName"></TextBox>
+    <StackPanel x:Name="uxContainer">
+        <TextBlock>Enter Name:</TextBlock>
+        <TextBox x:Name="uxName" 
+        Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, 
+            ValidatesOnDataErrors=True}" Background="Beige" Height="50">
+        </TextBox>
+        <Label x:Name="uxNameError" 
+            Content="{Binding NameError, UpdateSourceTrigger=PropertyChanged}" 
+               Background="Azure" Height="50"></Label>
+        
+        <!--Exercise 1-->
         <TextBlock>Enter Password:</TextBlock>
-        <TextBox x:Name="uxPassword"></TextBox>
+        <TextBox x:Name="uxPassword" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, 
+            ValidatesOnDataErrors=True}" Background="Beige" Height="50"></TextBox>
+        <Label x:Name="uxPasswordError" 
+            Content="{Binding PasswordError, UpdateSourceTrigger=PropertyChanged}" 
+               Background="Azure" Height="50"></Label>
+        
         <Button x:Name="uxSubmit" Click="uxSubmit_Click" FontWeight="Bold" Opacity="0.5">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -27,6 +40,9 @@
                 <Image Source="images/ic_thumb_up_black_24dp_2x.png" />
                 <TextBlock Margin="15,10,10,10" VerticalAlignment="Center" Text="Thumbs Up" />
             </StackPanel>
+        </Button>
+        <Button Height="100" Width="200">
+            <CheckBox>Check Me</CheckBox>
         </Button>
     </StackPanel>
 

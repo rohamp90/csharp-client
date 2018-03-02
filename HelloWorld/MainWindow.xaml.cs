@@ -20,12 +20,20 @@ namespace HelloWorld
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Models.User user = new Models.User();
+
         public MainWindow()
         {
             InitializeComponent();
             // Exercise #1: Maximize the window using code
             // use WindowState
             // WindowState = WindowState.Maximized; // note that you can use also Minimize or Normal
+        }
+
+        public override void EndInit()
+        {
+            base.EndInit();
+            uxContainer.DataContext = user;
         }
 
         private void uxSubmit_Click(object sender, RoutedEventArgs e)
